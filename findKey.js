@@ -1,10 +1,7 @@
-const findKeyByValue = require("./findKeyByValue");
-
 const findKey = function(obj, callback) {
-  const objKey = Object.keys(obj);
-  for (const val of objKey) {
-    if (callback(obj[val])) {
-      return val;
+  for (let key in obj) {
+    if(callback(obj[key])) {
+      return key
     }
   }
 };

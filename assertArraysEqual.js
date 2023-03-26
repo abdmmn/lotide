@@ -1,39 +1,11 @@
-// FUNCTION IMPLEMENTATION
-const eqArrays = function(actual, expected) {
-  if(actual.length !== expected.length) {
-    return false
-  }
+const eqArrays = require("./eqArrays")
 
-  for (let i = 0; i < actual.length; i++) {
-    if(actual[i] !== expected[i]) {
-      return false
-    }
+const assertArraysEqual = function(array1, array2) {
+  if (eqArrays(array1,array2)) {
+    console.log(`✅✅✅ Assertion Passed: ${array1} === ${array2}`);
+  } else {
+    console.log(`🛑🛑🛑 Assertion Failed: ${array1} !== ${array2}`);
   }
-  return true;
 };
 
-
-
-const assertArraysEqual = function(actual, expected) {
-  const result = eqArrays(actual, expected)
-
-if (result){
-  console.log ("✅✅✅ Assertion passed", actual, "!==", expected);
-}
-else {
-  console.log ("🛑🛑🛑 Assertion failed", actual, "===", expected)
-}
-
-};
-
-
-// TEST CODE
- 
-assertArraysEqual([1, 2, 3], [1, 2, 3])// => true
-
-console.log(eqArrays([1, 2, 3], [3, 2, 1])) // => false
-
-console.log(eqArrays(["1", "2", "3"], ["1", "2", "3"])) // => true
-console.log(eqArrays(["1", "2", "3"], ["1", "2", 3])) // => false
-
-// To run in terminal, type >>>>>>   node assertEqual.js
+module.exports = assertArraysEqual

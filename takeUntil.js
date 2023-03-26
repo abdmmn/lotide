@@ -1,11 +1,12 @@
 const takeUntil = function(array, callback) {
-
-  let result = [];
+  const result = [];
   for (const word of array) {
-    if (!callback(word)) {
-      result.push(word);
-    } else break;
-  } return result;
+    if (callback(word)) {
+      return result;
+    } 
+    result.push(word)
+  }
+  return result;
 };
 
 module.exports = takeUntil
